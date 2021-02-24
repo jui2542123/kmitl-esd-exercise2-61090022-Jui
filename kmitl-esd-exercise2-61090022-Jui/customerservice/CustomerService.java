@@ -36,7 +36,7 @@ public class CustomerService {
      * get customer
      * @return list of customers
      */
-    public List<CustomerDTO> getAllCustomers() {
+    public List<CustomerDTO> getAllCustomer() {
         return customers;
     }
 
@@ -55,7 +55,7 @@ public class CustomerService {
      */
     public CustomerDTO updateCustomer(CustomerDTO customer) {
         try {
-            CustomerDTO customerTobeUpdated = customers.stream().filter(c -> c.getId().equals(customer.getId())).findFirst().get();
+            CustomerDTO customerTobeUpdated = customers.stream().findFirst().get();
             customers.remove(customerTobeUpdated);
             customers.add(customer);
         } catch (Exception e) {
@@ -72,7 +72,7 @@ public class CustomerService {
      */
     public boolean deleteCustomer(Long customerId) {
         try {
-            CustomerDTO customerTobeDeleted = customers.stream().filter(c -> c.getId().equals(customerId)).findFirst().get();
+            CustomerDTO customerTobeDeleted = customers.stream().findFirst().get();
             customers.remove(customerTobeDeleted);
 
             return true;

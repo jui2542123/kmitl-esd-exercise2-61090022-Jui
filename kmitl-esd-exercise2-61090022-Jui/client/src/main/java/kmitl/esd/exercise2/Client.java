@@ -1,6 +1,5 @@
 package client.src.main.java.kmitl.esd.exercise2;
 
-import client.src.main.java.kmitl.esd.exercise2.LoggerFactory;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,8 +21,6 @@ public class Client {
         app.setDefaultProperties(Collections
                 .singletonMap("server.port", "8089"));
         app.run(args);
-
-        // SpringApplication.run(Exercise2Client.class, args);
     }
 
     @Bean
@@ -35,22 +32,51 @@ public class Client {
      * Main entry point for the client 
      */
     @Bean
-    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+    public CommandLineRunner runGetAll(RestTemplate restTemplate) throws Exception {
         return args -> {
-            String response = callAll(restTemplate, "Tom");
-            log.info(String.format("Hello GET call: " + response));
+            String response = callGetAll(restTemplate);
+            log.info(String.format("GET call: " + response));
         };
     }
 
-    String callGetAll(RestTemplate restTemplate, String name) {
+    /**
+     * Delete
+     */
+    @Bean
+    public CommandLineRunner runDelete(RestTemplate restTemplate) throws Exception {
+        return args -> {
+            callDeleteCustomer(restTemplate, "1");
+            String response = callGetAll(restTemplate);
+
+            log.info(String.format("Delete: " + response));
+        };
+    }
+
+    /**
+     * get all customers
+     * @param restTemplate
+     * @return respString
+     */
+    String callGetAll(RestTemplate restTemplate) {
         StringBuffer url = new StringBuffer("http://localhost:8080/customer");
-        if (name != null) {
-            url.append("?name=").append(name);
-        }
         String respString = restTemplate.getForObject(
                 url.toString(), String.class);
         return respString;
     }
+
+    /**
+     * delete customer
+     * @param restTemplate
+     * @param id
+     */
+
+    void callDeleteCustomer(RestTemplate restTemplate, String id) {
+        String url = "http://localhost:8000/customer/" + id;
+
+        restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);
+    }
+
+
 
 
 }
