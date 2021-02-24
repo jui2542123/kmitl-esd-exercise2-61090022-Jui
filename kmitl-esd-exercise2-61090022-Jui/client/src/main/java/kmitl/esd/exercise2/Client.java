@@ -1,4 +1,4 @@
-package kmitl.esd.exercise2;
+package client.src.main.java.kmitl.esd.exercise2;
 
 import client.src.main.java.kmitl.esd.exercise2.LoggerFactory;
 import org.slf4j.LoggerFactory;
