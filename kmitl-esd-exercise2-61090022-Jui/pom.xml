@@ -19,6 +19,7 @@
 		<module>server</module>
 		<module>client</module>
 		<module>model</module>
+		<module>customerservice</module>
 	</modules>
 	<properties>
 		<java.version>15</java.version>
