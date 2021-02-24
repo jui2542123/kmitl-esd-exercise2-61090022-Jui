@@ -32,7 +32,7 @@ public class Client {
      * Main entry point for the client 
      */
     @Bean
-    public CommandLineRunner runGetAll(RestTemplate restTemplate) throws Exception {
+    public CommandLineRunner GetAll(RestTemplate restTemplate) throws Exception {
         return args -> {
             String response = callGetAll(restTemplate);
             log.info(String.format("GET call: " + response));
@@ -43,7 +43,7 @@ public class Client {
      * Delete
      */
     @Bean
-    public CommandLineRunner runDelete(RestTemplate restTemplate) throws Exception {
+    public CommandLineRunner Delete(RestTemplate restTemplate) throws Exception {
         return args -> {
             callDeleteCustomer(restTemplate, "1");
             String response = callGetAll(restTemplate);
