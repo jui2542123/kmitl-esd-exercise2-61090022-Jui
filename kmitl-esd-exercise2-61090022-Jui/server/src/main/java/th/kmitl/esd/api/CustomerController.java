@@ -34,12 +34,27 @@ public class CustomerController {
     public List<CustomerDTO> getAllCustomer() {
         return CustomerService.INSTANCE.getAllCustomer();
     }
+
+    /**
+     *create customer
+     *
+     * @return customer
+     */
     @PostMapping
     public CustomerDTO createCustomer(@RequestBody CustomerDTO customer)
     {
         return CustomerService.INSTANCE.createCustomer(customer);
     }
+    /**
+     *update customer
+     *
+     * @return customer
+     */
 
+    @PutMapping
+    public CustomerDTO updateCustomer(@RequestBody CustomerDTO customer) {
+        return CustomerService.INSTANCE.updateCustomer(customer);
+    }
 
     /**
      * Delete customer
