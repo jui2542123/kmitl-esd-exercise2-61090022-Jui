@@ -22,7 +22,6 @@ public class CustomerController {
     static{
         CustomerDTO customerT = new CustomerDTO(1,"T");
         customers.add(customerT);
-
     }
 
     /**
@@ -64,9 +63,7 @@ public class CustomerController {
 
     @DeleteMapping("/{id}")
     public Boolean deleteCustomer(@PathVariable("id")Long customerId){
-        CustomerDTO customerToBeDeleted = customers.stream().filter(c -> c.getId().equals(customerId))
-        if(customerToBeDeleted != null){
-        }
+        return  CustomerService.INSTANCE.deleteCustomer(customerId);
     }
 
 
