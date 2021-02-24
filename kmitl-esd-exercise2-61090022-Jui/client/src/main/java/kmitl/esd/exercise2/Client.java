@@ -1,5 +1,6 @@
 package client.src.main.java.kmitl.esd.exercise2;
 
+import model.src.main.java.kmitl.esd.exercise2.model.CustomerDTO;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -34,21 +35,28 @@ public class Client {
     @Bean
     public CommandLineRunner GetAll(RestTemplate restTemplate) throws Exception {
         return args -> {
+            /**
+             * start with get
+             */
             String response = callGetAll(restTemplate);
             log.info(String.format("GET call: " + response));
-        };
-    }
+            /**
+             * create
+             */
+            CustomerDTO createCustomer = callCreateCustomer(restTemplate);
+            log.info("CREATE: " + createCustomer.toString());
+            /**
+             * update
+             */
+            CustomerDTO updateCustomer=callUpdateCustomer(restTemplate);
+            log.info("UPDATE: " + updateCustomer.toString());
+            /**
+             * delete
+             */
+            ResponseEntity responseEntity =callDeleteCustomer(restTemplate,"0");
+            String deleteResponse = callGetAll(restTemplate);
+            log.info("DELETE : " +deleteResponse);
 
-    /**
-     * Delete
-     */
-    @Bean
-    public CommandLineRunner Delete(RestTemplate restTemplate) throws Exception {
-        return args -> {
-            callDeleteCustomer(restTemplate, "1");
-            String response = callGetAll(restTemplate);
-
-            log.info(String.format("Delete: " + response));
         };
     }
 
@@ -65,15 +73,58 @@ public class Client {
     }
 
     /**
+     * Create the customer
+     * @param restTemplate
+     * @return
+     * @throws JSONException
+     */
+
+    CustomerDTO callCreateCustomer(RestTemplate restTemplate) throws JSONException {
+        JSONObject customers = new JSONObject();
+        customers.put("id",1);
+        customers.put("name","A");
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> request = new HttpEntity<>(customers.toString(), headers);
+
+        ResponseEntity<CustomerDTO> response = restTemplate.exchange("http://localhost:8080/customer", HttpMethod.POST, request, CustomerDTO.class);
+        return response.getBody();
+
+    }
+
+    /**
+     * Update customer info
+     * @param restTemplate
+     * @return
+     * @throws JSONException
+     */
+
+    CustomerDTO callUpdateCustomer(RestTemplate restTemplate) throws JSONException {
+        JSONObject customers = new JSONObject();
+        customers.put("id",2);
+        customers.put("name","B");
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> request = new HttpEntity<>(customers.toString(), headers);
+
+        ResponseEntity<CustomerDTO> response = restTemplate.exchange("http://localhost:8000/customer", HttpMethod.PUT, request, CustomerDTO.class);
+
+        return response.getBody();
+
+    }
+
+
+    /**
      * delete customer
      * @param restTemplate
      * @param id
      */
 
-    void callDeleteCustomer(RestTemplate restTemplate, String id) {
-        String url = "http://localhost:8000/customer/" + id;
-
-        restTemplate.exchange(url, HttpMethod.DELETE, null, String.class);
+    ResponseEntity<String> callDeleteCustomer(RestTemplate restTemplate, String customerId) {
+        ResponseEntity<String> response=restTemplate.exchange("http://localhost:8000/customer/" + customerId,HttpMethod.DELETE,null,String.class);
+        return response;
     }
 
 
