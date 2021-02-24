@@ -1,22 +1,16 @@
 package kmitl.esd.exercise2;
 
-import org.slf4j.Logger;
+import client.src.main.java.kmitl.esd.exercise2.LoggerFactory;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
+import java.util.logging.Logger;
 
 @SpringBootApplication
 public class Client {

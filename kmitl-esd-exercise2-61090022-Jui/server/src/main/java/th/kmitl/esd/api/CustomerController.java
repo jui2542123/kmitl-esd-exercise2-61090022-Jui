@@ -1,7 +1,7 @@
 package server.src.main.java.th.kmitl.esd.api;
 
-import kmitl.esd.exercise2.model.CustomerDTO;
-
+import customerservice.CustomerService;
+import model.src.main.java.kmitl.esd.exercise2.model.CustomerDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
