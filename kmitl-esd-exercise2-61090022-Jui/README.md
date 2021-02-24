@@ -1,3 +1,7 @@
+*Some POM files are unable to change the artifactID because of the reason that I don't know
+I use the base one I get from the GOedu.
+
+
 # Overview
 This project covers the excercise 2 (Client, Server, API) for KMITL ESD - lecture 5-7:
 - Server with API (RESTful web services) 

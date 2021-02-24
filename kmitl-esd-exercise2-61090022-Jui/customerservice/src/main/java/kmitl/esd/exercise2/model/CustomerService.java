@@ -2,12 +2,18 @@ package kmitl.esd.exercise2.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
+import kmitl.esd.exercise2.model.CustomerDTO;
+
 
 public class CustomerService {
     /**
      * Singleton service
      */
     public static CustomerService INSTANCE = new CustomerService();
+
 
     /**
      * Customer list to represent the database containing customers
@@ -27,9 +33,19 @@ public class CustomerService {
         customers.add(customerB);
     }
     /**
-     * Private constructor - singleton pattern
+     * Singleton
+     * @return INSTANCE
      */
-    private CustomerService() {}
+
+    public static CustomerService getInstance() {
+        if (INSTANCE != null) {
+            return INSTANCE;
+        }
+
+        INSTANCE = new CustomerService();
+
+        return INSTANCE;
+    }
 
     /**
      * get customer
@@ -54,7 +70,14 @@ public class CustomerService {
      */
     public CustomerDTO updateCustomer(CustomerDTO customer) {
         try {
-            CustomerDTO customerTobeUpdated = customers.stream().findFirst().get();
+            Optional<CustomerDTO> found = Optional.empty();
+            for (CustomerDTO c : customers) {
+                if (Objects.equals(c.getId(), customer.getId())) {
+                    found = Optional.of(c);
+                    break;
+                }
+            }
+            CustomerDTO customerTobeUpdated = found.get();
             customers.remove(customerTobeUpdated);
             customers.add(customer);
         } catch (Exception e) {
@@ -71,7 +94,15 @@ public class CustomerService {
      */
     public boolean deleteCustomer(Long customerId) {
         try {
-            CustomerDTO customerTobeDeleted = customers.stream().findFirst().get();
+            Optional<CustomerDTO> found = Optional.empty();
+            for (CustomerDTO c : customers) {
+                if (!Objects.equals(c.getId(), customerId)) {
+                } else {
+                    found = Optional.of(c);
+                    break;
+                }
+            }
+            CustomerDTO customerTobeDeleted = found.get();
             customers.remove(customerTobeDeleted);
 
             return true;
