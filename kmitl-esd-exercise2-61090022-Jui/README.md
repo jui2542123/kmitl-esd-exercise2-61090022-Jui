@@ -1,5 +1,5 @@
 *Some POM files are unable to change the artifactID because of the reason that I don't know
-I use the base one I get from the GOedu.
+I use the base one I got from the GOedu.
 
 
 # Overview
