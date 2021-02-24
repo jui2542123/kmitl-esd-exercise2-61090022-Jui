@@ -1,7 +1,6 @@
-package th.kmitl.esd.api;
+package server.src.main.java.th.kmitl.esd.api;
 
 import org.springframework.boot.SpringApplication;
-
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication

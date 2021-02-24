@@ -43,13 +43,13 @@ public class Client {
     @Bean
     public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
         return args -> {
-            String response = callGetHello(restTemplate, "Tom");
+            String response = callAll(restTemplate, "Tom");
             log.info(String.format("Hello GET call: " + response));
         };
     }
 
-    String callGetHello(RestTemplate restTemplate, String name) {
-        StringBuffer url = new StringBuffer("http://localhost:8080/hello1?name=Tom");
+    String callGetAll(RestTemplate restTemplate, String name) {
+        StringBuffer url = new StringBuffer("http://localhost:8080/customer");
         if (name != null) {
             url.append("?name=").append(name);
         }
