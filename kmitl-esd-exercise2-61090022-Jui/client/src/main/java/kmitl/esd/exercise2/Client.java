@@ -1,12 +1,16 @@
-package client.src.main.java.kmitl.esd.exercise2;
+package kmitl.esd.exercise2;
 
-import model.src.main.java.kmitl.esd.exercise2.model.CustomerDTO;
+import kmitl.esd.exercise2.model.CustomerDTO;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.*;
+
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
@@ -15,7 +19,7 @@ import java.util.logging.Logger;
 @SpringBootApplication
 public class Client {
 
-    private static final Logger log = LoggerFactory.getLogger(Client.class);
+    private static final Logger log = (Logger) LoggerFactory.getLogger(Client.class);
 
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(Client.class);
@@ -112,14 +116,12 @@ public class Client {
         ResponseEntity<CustomerDTO> response = restTemplate.exchange("http://localhost:8000/customer", HttpMethod.PUT, request, CustomerDTO.class);
 
         return response.getBody();
-
     }
-
 
     /**
      * delete customer
      * @param restTemplate
-     * @param id
+     * @param customerId
      */
 
     ResponseEntity<String> callDeleteCustomer(RestTemplate restTemplate, String customerId) {

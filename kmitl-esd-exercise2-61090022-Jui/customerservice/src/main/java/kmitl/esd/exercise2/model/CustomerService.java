@@ -1,7 +1,4 @@
-package customerservice;
-
-
-import model.src.main.java.kmitl.esd.exercise2.model.CustomerDTO;
+package kmitl.esd.exercise2.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +12,9 @@ public class CustomerService {
     /**
      * Customer list to represent the database containing customers
      */
+
     private static List<CustomerDTO> customers = new ArrayList<>();
+
 
     /**
      * Create customer + add to list

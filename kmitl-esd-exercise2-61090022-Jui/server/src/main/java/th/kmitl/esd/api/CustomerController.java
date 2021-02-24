@@ -1,13 +1,12 @@
-package server.src.main.java.th.kmitl.esd.api;
+package th.kmitl.esd.api;
 
-import customerservice.CustomerService;
-import model.src.main.java.kmitl.esd.exercise2.model.CustomerDTO;
+import kmitl.esd.exercise2.model.CustomerService;
+import kmitl.esd.exercise2.model.CustomerDTO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-
 
 
 @RestController

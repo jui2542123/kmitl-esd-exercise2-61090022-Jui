@@ -1,4 +1,4 @@
-package model.src.main.java.kmitl.esd.exercise2.model;
+package kmitl.esd.exercise2.model;
 
 import java.io.Serializable;
 

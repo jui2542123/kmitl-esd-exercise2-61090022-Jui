@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>server</artifactId>
+    <artifactId>customerservice</artifactId>
     <dependencies>
         <dependency>
             <groupId>kmitl.esd.exercise2</groupId>
@@ -17,27 +17,11 @@
             <version>1.0.0</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>kmitl.esd.exercise2</groupId>
-            <artifactId>model</artifactId>
-            <version>1.0.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>kmitl.esd.exercise2</groupId>
-            <artifactId>customerservice</artifactId>
-            <version>1.0.0</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <properties>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
+    </properties>
 
 </project>

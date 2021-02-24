@@ -4,6 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <artifactId>client</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>kmitl.esd.exercise2</groupId>
+            <artifactId>model</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.vaadin.external.google</groupId>
+            <artifactId>android-json</artifactId>
+            <version>0.0.20131108.vaadin1</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
     <parent>
         <artifactId>kmitl-esd-exercise2-client-server-12345-Roland</artifactId>
         <groupId>kmitl.esd.exercise2</groupId>

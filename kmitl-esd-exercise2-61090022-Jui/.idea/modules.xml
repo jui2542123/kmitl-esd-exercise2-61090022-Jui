@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/client/client.iml" filepath="$PROJECT_DIR$/client/client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/customerservice/customerservice.iml" filepath="$PROJECT_DIR$/customerservice/customerservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/kmitl-esd-exercise2-61090022-Jui.iml" filepath="$PROJECT_DIR$/kmitl-esd-exercise2-61090022-Jui.iml" />
       <module fileurl="file://$PROJECT_DIR$/model/model.iml" filepath="$PROJECT_DIR$/model/model.iml" />
       <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
