@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+
+
 @RestController
 @RequestMapping("/customer")
 
@@ -23,21 +25,35 @@ public class CustomerController {
 
     }
 
-
+    /**
+     *Get all customers details
+     * @return customerlist
+     */
 
     @GetMapping("/findall")
-    public List<CustomerDTO> getAllCustomer(Object customerId){
-        return customers;
+    public List<CustomerDTO> getAllCustomer() {
+        return CustomerService.INSTANCE.getAllCustomer();
+    }
+    @PostMapping
+    public CustomerDTO createCustomer(@RequestBody CustomerDTO customer)
+    {
+        return CustomerService.INSTANCE.createCustomer(customer);
+    }
 
+
+    /**
+     * Delete customer
+     * @param customerId
+     * @return boolean
+     */
 
     @DeleteMapping("/{id}")
     public Boolean deleteCustomer(@PathVariable("id")Long customerId){
         CustomerDTO customerToBeDeleted = customers.stream().filter(c -> c.getId().equals(customerId))
         if(customerToBeDeleted != null){
-
         }
     }
 
 
-    }
+
 }
